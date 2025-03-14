@@ -8,6 +8,8 @@ public class BoatController : MonoBehaviour
     private float acceleration;
     [SerializeField]
     private float rotationSpeed;
+    [SerializeField]
+    private GameObject centerOfMass;
     
     private KeyCode keyForward;
     private KeyCode keyBackward;
@@ -37,7 +39,11 @@ public class BoatController : MonoBehaviour
         handleMove();
         handleRotation();
         
-        rb.centerOfMass = new Vector2(0, Mathf.Max(1, rb.linearVelocity.y) * -Mathf.Sign(rb.linearVelocity.y));
+        rb.centerOfMass = new Vector2(
+            Mathf.Min(0.5f, Mathf.Abs(rb.linearVelocity.x)) * -Mathf.Sign(rb.linearVelocity.x),
+            Mathf.Min(1, Mathf.Abs(rb.linearVelocity.y)) * -Mathf.Sign(rb.linearVelocity.y)
+        );
+        centerOfMass.transform.position = transform.position + new Vector3(rb.centerOfMass.x, rb.centerOfMass.y, 0);
     }
 
     private void handleRotation()
