@@ -6,8 +6,14 @@ public class Titanic : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 1000;
     private int currentHealth;
-    
-    
+    private Flash flash;
+
+
+    private void Awake()
+    {
+        flash = GetComponent<Flash>();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +26,8 @@ public class Titanic : MonoBehaviour
         currentHealth -= damage;
 
         Debug.Log("[+] Titanic is hurt! -" + damage);
+
+        StartCoroutine(flash.FlashRoutine());
         
         if (currentHealth <= 0)
         {
