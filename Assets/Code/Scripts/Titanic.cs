@@ -28,6 +28,12 @@ public class Titanic : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        takeDamage(100);
+        Destroy(other.gameObject);
+    }
+
     public void Die()
     {
         Debug.Log("[+] Titanic died, you loosed :(");
