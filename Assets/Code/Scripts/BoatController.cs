@@ -28,6 +28,7 @@ public class BoatController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.centerOfMass = new Vector2(0, -1f);
     }
     
     // Update is called once per frame
@@ -62,7 +63,7 @@ public class BoatController : MonoBehaviour
         {
             move += transform.up * acceleration;
         }
-        
+            
         if(Input.GetKey(keyBackward))
         {
             move -= transform.up * (acceleration / 2);
