@@ -43,12 +43,12 @@ public class BoatController : MonoBehaviour
         
         if(Input.GetKey(keyTurnLeft))
         {
-            torque += 1f;
+            torque += rotationSpeed;
         }
         
         if(Input.GetKey(keyTurnRight))
         {
-            torque -= 1f;
+            torque -= rotationSpeed;
         }
         
         rb.AddTorque(torque * Time.deltaTime, ForceMode2D.Force);
@@ -58,12 +58,12 @@ public class BoatController : MonoBehaviour
     {
         var move = Vector3.zero;
         
-        if (Input.GetKey(keyBackward))
+        if (Input.GetKey(keyForward))
         {
             move += transform.up * acceleration;
         }
         
-        if(Input.GetKey(keyForward))
+        if(Input.GetKey(keyBackward))
         {
             move -= transform.up * (acceleration / 2);
         }
