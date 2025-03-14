@@ -1,3 +1,4 @@
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -28,7 +29,6 @@ public class BoatController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.centerOfMass = new Vector2(0, -1f);
     }
     
     // Update is called once per frame
@@ -36,6 +36,8 @@ public class BoatController : MonoBehaviour
     {
         handleMove();
         handleRotation();
+        
+        rb.centerOfMass = new Vector2(0, Mathf.Max(1, rb.linearVelocity.y) * -Mathf.Sign(rb.linearVelocity.y));
     }
 
     private void handleRotation()
