@@ -4,8 +4,10 @@ public class IcebergFactory : MonoBehaviour
 {
     // Calibration parameters exposed to the inspector for easy adjustment
     [Header("Iceberg Parameters")]
-    [SerializeField] public float initialSpawnInterval = 5f; // Time between spawns (can be adjusted in Inspector)
     [SerializeField] public GameObject icebergPrefab; // Assign your iceberg prefab in the Inspector
+    [SerializeField] public float initialSpawnInterval = 5f; // Time between spawns (can be adjusted in Inspector)
+
+    [SerializeField] public float collisionDebounceTime = 1f;
     
     // Iceberg spawn-related parameters
     [SerializeField] public float spawnOffsetX = 1f; // The offset for iceberg spawning position on the X-axis
