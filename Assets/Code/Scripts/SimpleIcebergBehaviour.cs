@@ -22,7 +22,7 @@ public class SimpleIcebergBehaviour : MonoBehaviour
         targetPosition = new Vector3(targetX, targetY, 0f);
 
         // Randomize size
-        float randomSize = Random.Range(0.5f, 1.5f);
+        float randomSize = Random.Range(0.05f, 0.35f);
         transform.localScale = new Vector3(randomSize, randomSize, 1f);
     }
 
