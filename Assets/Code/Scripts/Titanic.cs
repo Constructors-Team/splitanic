@@ -34,8 +34,7 @@ public class Titanic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
-        maxHealth = 1;
+        maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
         currentHealth = maxHealth;
         cameraShake = Camera.main.GetComponent<CameraShake>();
     }
