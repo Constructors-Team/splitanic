@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9138369653617459832}
   - component: {fileID: 7101849608519400304}
   - component: {fileID: 3527680554770267645}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SimpleIceberg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5505570785198084009}
   - component: {fileID: 3158299346452334314}
   - component: {fileID: 5944373418544510222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Titanic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
