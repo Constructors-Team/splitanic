@@ -3,9 +3,12 @@ using UnityEngine;
 public class IcebergFactory : MonoBehaviour
 {
     [Header("Iceberg Parameters")]
-    [SerializeField] public GameObject icebergPrefab; // The prefab for the iceberg to spawn
+    [SerializeField] public GameObject icebergPrefab; // The first prefab for the iceberg to spawn
+    [SerializeField] public Sprite alternativeSprite2; // The second sprite for the iceberg to spawn
+    [SerializeField] public Sprite alternativeSprite3; // The third sprite for the iceberg to spawn
+
     [SerializeField] public float initialSpawnInterval = 5f; // Initial interval (in seconds) between iceberg spawns
-    [SerializeField] public float spawnIntervalDecrement = 0.95f; // Increment (in seconds) to add to the spawn interval each minute
+    [SerializeField] public float spawnIntervalDecrement = 0.95f; // Decrease (in seconds) to apply to the spawn interval every minute
 
     [SerializeField] public float collisionDebounceTime = 1f; // Time (in seconds) to wait before allowing collisions again after a split
     
@@ -36,10 +39,10 @@ public class IcebergFactory : MonoBehaviour
         InvokeRepeating(nameof(DecreaseSpawnInterval), 60f, 60f); // Every 60 seconds
     }
 
-    // Method to increase the spawn interval every minute
+    // Method to decrease the spawn interval every minute
     private void DecreaseSpawnInterval()
     {
-        initialSpawnInterval = spawnIntervalDecrement * spawnIntervalDecrement;
+        initialSpawnInterval = spawnIntervalDecrement * initialSpawnInterval;
         CancelInvoke(nameof(SpawnIceberg)); // Cancel the current spawn invoke
         InvokeRepeating(nameof(SpawnIceberg), initialSpawnInterval, initialSpawnInterval); // Re-invoke with new interval
     }
@@ -63,10 +66,13 @@ public class IcebergFactory : MonoBehaviour
     // Method to spawn an iceberg at a specific position with a specific size
     public void SpawnIceberg(Vector3 position, float icebergSize)
     {
-        if (icebergPrefab == null) return; // Ensure that the prefab is assigned before spawning
+        // Randomly choose one of the iceberg sprites (including the alternative sprites)
+        GameObject selectedIceberg = GetRandomIcebergPrefab();
 
-        // Instantiate the iceberg at the given position
-        GameObject newIceberg = Instantiate(icebergPrefab, position, Quaternion.identity);
+        if (selectedIceberg == null) return; // Ensure that the prefab is assigned before spawning
+
+        // Instantiate the selected iceberg prefab at the given position
+        GameObject newIceberg = Instantiate(selectedIceberg, position, Quaternion.identity);
 
         // Access the SimpleIcebergBehaviour script to initialize the iceberg
         SimpleIcebergBehaviour icebergScript = newIceberg.GetComponent<SimpleIcebergBehaviour>();
@@ -79,5 +85,33 @@ public class IcebergFactory : MonoBehaviour
 
         // Set the IcebergFactory as the parent of the newly created iceberg
         newIceberg.transform.SetParent(transform); // 'transform' refers to the IcebergFactory's transform
+    }
+
+    // Method to randomly choose one of the iceberg sprites (original or alternative)
+    private GameObject GetRandomIcebergPrefab()
+    {
+        // Create an array of the iceberg prefabs and sprite alternatives
+        Sprite selectedSprite = null;
+        int randomChoice = Random.Range(0, 3); // Choose 0, 1, or 2
+
+        // Randomly select which sprite to use
+        if (randomChoice == 0)
+        {
+            selectedSprite = icebergPrefab.GetComponent<SpriteRenderer>().sprite; // The original iceberg prefab
+        }
+        else if (randomChoice == 1)
+        {
+            selectedSprite = alternativeSprite2; // The second alternative sprite
+        }
+        else
+        {
+            selectedSprite = alternativeSprite3; // The third alternative sprite
+        }
+
+        // Instantiate a prefab based on the selected sprite
+        GameObject iceberg = Instantiate(icebergPrefab, Vector3.zero, Quaternion.identity);
+        iceberg.GetComponent<SpriteRenderer>().sprite = selectedSprite;
+
+        return iceberg;
     }
 }

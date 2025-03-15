@@ -224,8 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 70
   maxSpeed: 150
-  maxReverseSpeed: 20
-  turnSpeed: 6
+  maxReverseSpeed: 30
+  turnSpeed: 12
   currentSpeed: 7
   rudderPosition: {fileID: 5429793183050403127}
 --- !u!50 &3423906262430522281

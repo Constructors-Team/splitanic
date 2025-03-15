@@ -206,7 +206,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icebergPrefab: {fileID: 1579209084254382252, guid: 5cd06dcb170546900b2301e1f795fd15, type: 3}
-  spawnInterval: 2
+  initialSpawnInterval: 5
+  spawnIntervalDecrement: 0.95
+  collisionDebounceTime: 1
+  spawnOffsetX: 1
+  minIcebergSize: 0.06
+  maxIcebergSize: 0.35
+  initialCollisionDelay: 0.05
+  minSizeForSplitting: 0.1
+  sizeReductionFactor: 0.5
+  icebergOffsetXForSplit: 1
 --- !u!4 &547360643
 Transform:
   m_ObjectHideFlags: 0
