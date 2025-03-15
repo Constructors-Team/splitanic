@@ -127,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1242017648826824506, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
+    - target: {fileID: 4026172131146258515, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
+    - target: {fileID: 4106473131106563649, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
     - target: {fileID: 6106361748787688375, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
       propertyPath: m_Name
       value: Walls
@@ -171,6 +183,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8861640914318238974, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
