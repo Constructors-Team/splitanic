@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Titanic : MonoBehaviour
@@ -9,6 +10,10 @@ public class Titanic : MonoBehaviour
     [SerializeField] private AudioClip BaseIcebergCollisionSound;
 
     [SerializeField] private AudioClip DieSound;
+
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private int numberOfExplosions = 5;
+    [SerializeField] private float explosionDuration = 3f; // Time window for explosions
 
     private AudioSource audioSource;
 
@@ -29,7 +34,8 @@ public class Titanic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
+        // maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
+        maxHealth = 1;
         currentHealth = maxHealth;
         cameraShake = Camera.main.GetComponent<CameraShake>();
     }
@@ -115,11 +121,32 @@ public class Titanic : MonoBehaviour
         {
             Debug.Log("[+] Play dieSound");
             audioSource.PlayOneShot(DieSound);
+            StartCoroutine(SpawnExplosions());
             Destroy(gameObject, DieSound.length);
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator SpawnExplosions()
+    {
+        float timeBetweenExplosions = explosionDuration / numberOfExplosions; // Evenly space out explosions
+
+        for (int i = 0; i < numberOfExplosions; i++)
+        {
+            Debug.Log("[+] Titanic is exploding!");
+            // Randomize the position around the Titanic
+            Vector3 randomOffset = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0f);
+            float randomScale = Random.Range(0.5f, 1.5f);
+
+            // Instantiate the explosion
+            GameObject explosion = Instantiate(explosionPrefab, transform.position + randomOffset, Quaternion.identity);
+            explosion.transform.localScale = new Vector3(randomScale, randomScale, 1f);
+
+            // Wait for the next explosion
+            yield return new WaitForSeconds(timeBetweenExplosions);
         }
     }
 

@@ -148,11 +148,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d59b0781dc71ae08f95f475630c90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnInterval: 5
   icebergPrefab: {fileID: 1579209084254382252, guid: 5cd06dcb170546900b2301e1f795fd15, type: 3}
+  alternativeSprite2: {fileID: 0}
+  alternativeSprite3: {fileID: 0}
+  initialSpawnInterval: 5
+  spawnIntervalDecrement: 0.95
+  collisionDebounceTime: 1
   spawnOffsetX: 1
   minIcebergSize: 0.06
   maxIcebergSize: 0.35
+  initialCollisionDelay: 0.05
   minSizeForSplitting: 0.1
   sizeReductionFactor: 0.5
   icebergOffsetXForSplit: 1
@@ -428,6 +433,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5505570785198084009, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 4509428241785203683, guid: a7fd488390a06b94583ca0374a853a47, type: 3}
     - target: {fileID: 8375412974809793255, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_Name
       value: Titanic

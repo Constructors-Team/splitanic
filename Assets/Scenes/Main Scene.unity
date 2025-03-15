@@ -256,6 +256,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5505570785198084009, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505570785198084009, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 4509428241785203683, guid: a7fd488390a06b94583ca0374a853a47, type: 3}
     - target: {fileID: 6033800473766630905, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
       value: -1.9548979
