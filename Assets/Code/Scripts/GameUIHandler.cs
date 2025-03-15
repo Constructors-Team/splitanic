@@ -25,7 +25,7 @@ public class GameUIHandler : MonoBehaviour
 
     void HealthUpdated()
     {
-        healthLabel.text = $"{titanic.currentHealth}/{titanic.maxHealth}";
+        healthLabel.text = $"{Mathf.CeilToInt(titanic.currentHealth)}/{Mathf.CeilToInt(titanic.maxHealth)}";
         float healthRatio = (float) titanic.currentHealth / titanic.maxHealth;
         float healthPercent = Mathf.Lerp(0, 100, healthRatio);
         healthBarMask.style.width = Length.Percent(healthPercent);
