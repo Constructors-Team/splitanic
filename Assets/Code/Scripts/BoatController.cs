@@ -40,7 +40,6 @@ public class BoatController : MonoBehaviour
         // Apply acceleration, limit speed
         var moveSpeed = moveInput * acceleration;
         moveSpeed = Mathf.Clamp(moveSpeed, -maxReverseSpeed, maxSpeed);
-
         if (Mathf.Abs(moveInput) > Mathf.Epsilon)
         {
             // Apply force in the direction the boat is facing
