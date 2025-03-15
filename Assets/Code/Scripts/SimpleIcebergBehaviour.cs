@@ -29,6 +29,8 @@ public class SimpleIcebergBehaviour : BaseIceberg
 
         // Get Rigidbody2D for physics behavior
         rb = GetComponent<Rigidbody2D>();
+        
+        rb.mass = icebergSize * 50;
 
         // Set a random speed for each iceberg
         speed = Random.Range(minSpeed, maxSpeed);

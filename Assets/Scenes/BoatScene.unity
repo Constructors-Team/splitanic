@@ -132,7 +132,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157238975}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -308,7 +308,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376732479}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -397,7 +397,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642754713}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -445,8 +445,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d59b0781dc71ae08f95f475630c90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialSpawnInterval: 5
   icebergPrefab: {fileID: 1579209084254382252, guid: 5cd06dcb170546900b2301e1f795fd15, type: 3}
-  spawnInterval: 2
+  spawnOffsetX: 1
+  minIcebergSize: 0.06
+  maxIcebergSize: 0.35
+  minSizeForSplitting: 0.1
+  sizeReductionFactor: 0.5
+  icebergOffsetXForSplit: 1
 --- !u!4 &979890588
 Transform:
   m_ObjectHideFlags: 0
@@ -475,7 +481,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737312884}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -571,14 +577,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
-      propertyPath: turnSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3423906262430522281, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
-      propertyPath: m_AngularDamping
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5256418899201255651, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
