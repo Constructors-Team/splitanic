@@ -48,7 +48,7 @@ MonoBehaviour:
   alternativeSprite2: {fileID: -4036924080673808529, guid: ac258132bd059b1219d9ae25c420561e, type: 3}
   alternativeSprite3: {fileID: -3449052013508691418, guid: 8a29a000af52edbe58f2adde01724642, type: 3}
   initialSpawnInterval: 5
-  spawnIntervalDecrement: 0.95
+  spawnIntervalDecrement: 0.9
   collisionDebounceTime: 1
   spawnOffsetX: 1
   minIcebergSize: 0.05

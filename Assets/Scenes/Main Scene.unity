@@ -582,6 +582,10 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 4682218985432668023, guid: 40332c5ad483cb5129ae7c92d2df9aa1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682218985432668023, guid: 40332c5ad483cb5129ae7c92d2df9aa1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
