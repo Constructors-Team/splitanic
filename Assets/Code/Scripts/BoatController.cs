@@ -39,11 +39,8 @@ public class BoatController : MonoBehaviour
         handleRotation();
         
         // try to adjust center of mass to make boat behaviour more "interresting" :) 
-        rb.centerOfMass = new Vector2(
-            0,
-            Mathf.Min(1, Mathf.Abs(rb.linearVelocity.y)) * -Mathf.Sign(rb.linearVelocity.y)
-        );
-        centerOfMass.transform.position = transform.position + new Vector3(rb.centerOfMass.x, rb.centerOfMass.y, 0);
+        rb.centerOfMass = new Vector2(0, -3f) + rb.linearVelocity * 1.4f;
+        centerOfMass.transform.position = transform.TransformPoint(rb.centerOfMass);
     }
 
     private void handleRotation()
