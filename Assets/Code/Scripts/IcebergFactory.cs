@@ -22,7 +22,7 @@ public class IcebergFactory : MonoBehaviour
         Vector3 spawnPosition = new Vector3(screenWidth / 2 + 1f, randomY, 0f);
 
         // Generate a random iceberg size
-        float icebergSize = Random.Range(0.05f, 0.35f);
+        float icebergSize = Random.Range(0.06f, 0.35f);
 
         // Call the method to spawn the iceberg with position and size
         SpawnIceberg(spawnPosition, icebergSize);

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BaseIceberg : MonoBehaviour
 {
-    
     private IcebergFactory factory; // Reference to IcebergFactory
 
     void Start()
@@ -10,9 +9,15 @@ public class BaseIceberg : MonoBehaviour
         // Find the factory in the scene
         factory = FindObjectOfType<IcebergFactory>(); // Automatically finds the IcebergFactory in the scene
     }
+
     protected void SplitIceberg()
     {
-        if (transform.localScale.x < 0.1f) return; // Avoid infinite splitting
+        if (transform.localScale.x < 0.05f)
+        {
+            // Remove the tag when the iceberg is smaller than the threshold size
+            gameObject.tag = "Untagged"; // or use gameObject.tag = null if you want to remove the tag completely
+            return; // No further splitting
+        }
 
         float newSize = transform.localScale.x * 0.5f; // Reduce size
 
@@ -33,4 +38,11 @@ public class BaseIceberg : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            SplitIceberg();
+        }
+    }
 }
