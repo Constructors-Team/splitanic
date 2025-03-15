@@ -200,6 +200,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1153372715804591862, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
+      value: -1.9495988
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153372715804591862, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
+      value: 1.5189651
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153372715804591862, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
+      value: -1.9003344
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153372715804591862, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
+      value: -3.227957
+      objectReference: {fileID: 0}
     - target: {fileID: 2313669988867382227, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.24
@@ -239,6 +255,22 @@ PrefabInstance:
     - target: {fileID: 2313669988867382227, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033800473766630905, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
+      value: -1.9548979
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033800473766630905, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
+      value: 1.5351946
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033800473766630905, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
+      value: -1.8945317
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033800473766630905, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
+      value: -3.2424638
       objectReference: {fileID: 0}
     - target: {fileID: 8375412974809793255, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_Name
