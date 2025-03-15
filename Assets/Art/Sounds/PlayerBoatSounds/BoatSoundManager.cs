@@ -21,14 +21,11 @@ public class BoatSoundManager : MonoBehaviour
      public void PlayLoopingSound(bool movingForward, bool movingBackward)
      {
           if (audioSource == null) return;
-          Debug.Log("[+] BoatSoundManager.PlayLoopingSound() called!");
 
           if (movingForward && forwardMotorSound != null)
           {
-               Debug.Log("[+] Boat is moving forward!");
                if (audioSource.clip != forwardMotorSound) // Avoid restarting the sound
                {
-                    Debug.Log("[+] Audio set to forwardSound!");
                     audioSource.clip = forwardMotorSound;
                     audioSource.loop = true;
                     audioSource.volume = 0.7f;
@@ -37,10 +34,8 @@ public class BoatSoundManager : MonoBehaviour
           }
           else if (movingBackward && backwardMotorSound != null)
           {
-               Debug.Log("[+] Boat is moving backward!");
                if (audioSource.clip != backwardMotorSound)
                {
-                    Debug.Log("[+] Audio set to backwardSound!!");
                     audioSource.clip = backwardMotorSound;
                     audioSource.loop = true;
                     audioSource.volume = 0.7f;
