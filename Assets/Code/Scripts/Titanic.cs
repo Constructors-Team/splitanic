@@ -82,7 +82,7 @@ public class Titanic : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("IceBreaker"))
         {
             Debug.Log("[+] Player Boat collided with Titanic!");
             // Make a weird sound
