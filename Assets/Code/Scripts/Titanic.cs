@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Titanic : MonoBehaviour
 {
+    [SerializeField] private AudioClip boatCollisionSound;
+    [SerializeField] private AudioClip icebergCollisionSound;
+
+    private AudioSource audioSource;
+    
     [SerializeField] private int maxHealth = 1000;
     private int currentHealth;
     private Flash flash;
@@ -12,6 +17,8 @@ public class Titanic : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        
         flash = GetComponent<Flash>();
     }
 
@@ -21,6 +28,14 @@ public class Titanic : MonoBehaviour
         currentHealth = maxHealth;
         cameraShake = Camera.main.GetComponent<CameraShake>();
 
+    }
+
+    private void PlayCollisionSound()
+    {
+        if (audioSource != null && boatCollisionSound != null)
+        {
+            audioSource.PlayOneShot(boatCollisionSound);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -41,8 +56,14 @@ public class Titanic : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("PlayerBoat"))
+        {
+            Debug.Log("[+] Player Boat collided with Titanic!");
+            // Make a weird sound
+            PlayCollisionSound();
+            return;
+        }
         TakeDamage(100);
-        Destroy(other.gameObject);
     }
 
     public void Die()

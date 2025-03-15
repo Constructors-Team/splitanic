@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b29229274c60b90a9c217d75400a644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boatCollisionSound: {fileID: 0}
+  icebergCollisionSound: {fileID: 0}
   maxHealth: 1000
 --- !u!114 &5944373418544510222
 MonoBehaviour:
