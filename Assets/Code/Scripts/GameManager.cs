@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private float frameDuration = 0.1f;
 
-    [SerializeField]
     private int score;
+
+    public TextMeshProUGUI scoreText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour
                 Debug.Log("score : " + score);
                 Debug.Log("Titanic is dead");
             }
+
+            scoreText.text = $"Score : {score}";
 
             yield return new WaitForSeconds(frameDuration);
         }
