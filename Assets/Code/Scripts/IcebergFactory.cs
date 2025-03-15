@@ -4,7 +4,7 @@ public class IcebergFactory : MonoBehaviour
 {
     // Calibration parameters exposed to the inspector for easy adjustment
     [Header("Iceberg Parameters")]
-    [SerializeField] public float spawnInterval = 5f; // Time between spawns (can be adjusted in Inspector)
+    [SerializeField] public float initialSpawnInterval = 5f; // Time between spawns (can be adjusted in Inspector)
     [SerializeField] public GameObject icebergPrefab; // Assign your iceberg prefab in the Inspector
     
     // Iceberg spawn-related parameters
@@ -25,7 +25,7 @@ public class IcebergFactory : MonoBehaviour
         screenHeight = Camera.main.orthographicSize * 2f;
         screenWidth = screenHeight * Camera.main.aspect;
 
-        InvokeRepeating(nameof(SpawnIceberg), 0f, spawnInterval);
+        InvokeRepeating(nameof(SpawnIceberg), 0f, initialSpawnInterval);
     }
 
     // This method is used to spawn an iceberg with a random position and size
@@ -60,5 +60,9 @@ public class IcebergFactory : MonoBehaviour
             // Initialize the iceberg with the given position and size
             icebergScript.Initialize(position, icebergSize);
         }
+
+        // Set the IcebergFactory as the parent of the newly created iceberg
+        newIceberg.transform.SetParent(transform); // 'transform' refers to the IcebergFactory's transform
     }
+
 }
