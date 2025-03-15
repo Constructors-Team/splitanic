@@ -46,12 +46,9 @@ public abstract class BaseIceberg : MonoBehaviour
             return; // No further splitting
         }
         
-        Debug.Log("[+] Should now play split ->");
         // Play the split sound
         if (AudioSource != null && AudioClip != null)
         {
-            Debug.Log("[+] Playing split sound!!!!!");
-            AudioSource.PlayOneShot(AudioClip);
             // I'm rushing, but this is a quick way to play a sound without having to worry about the AudioSource being
             // destroyed when the iceberg object is destroyed
             GameObject tempAudio = new GameObject("TempAudio");
