@@ -185,6 +185,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
+      propertyPath: turnSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
       propertyPath: maxReverseSpeed
       value: 40
       objectReference: {fileID: 0}
@@ -284,6 +288,10 @@ PrefabInstance:
     - target: {fileID: 2313669988867382227, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505570785198084009, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
+      propertyPath: nonDamagingSize
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8375412974809793255, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_Name
@@ -435,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7066237119785235304, guid: 222b177a99694f580988f911557a0f85, type: 3}
       propertyPath: minIcebergSize
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7066237119785235304, guid: 222b177a99694f580988f911557a0f85, type: 3}
       propertyPath: minSizeForSplitting
@@ -447,7 +455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7066237119785235304, guid: 222b177a99694f580988f911557a0f85, type: 3}
       propertyPath: collisionDebounceTime
-      value: 200
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7066237119785235304, guid: 222b177a99694f580988f911557a0f85, type: 3}
+      propertyPath: spawnIntervalDecrement
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
