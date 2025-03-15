@@ -12,7 +12,7 @@ public class Titanic : MonoBehaviour
 
     private AudioSource audioSource;
 
-    [SerializeField] private float maxHealth;
+    public float maxHealth;
     [SerializeField] private float nonDamagingSize = 0.1f;
     public float currentHealth;
     private Flash flash;
