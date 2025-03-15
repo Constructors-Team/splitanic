@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class BaseIceberg : MonoBehaviour
+public abstract class BaseIceberg : MonoBehaviour
 {
+    protected abstract AudioSource AudioSource { get; }
+    protected abstract AudioClip AudioClip { get; }
+    
     protected IcebergFactory factory; // Reference to IcebergFactory
 
     void Start()
@@ -10,7 +13,7 @@ public class BaseIceberg : MonoBehaviour
         factory = FindObjectOfType<IcebergFactory>(); // Automatically finds the IcebergFactory in the scene
     }
 
-    protected void SplitIceberg()
+    public virtual void SplitIceberg()
     {
         // Ensure factory is available and access settings from it
         if (factory == null) return;
@@ -26,6 +29,12 @@ public class BaseIceberg : MonoBehaviour
             // Remove the tag when the iceberg is smaller than the threshold size
             gameObject.tag = "Untagged"; // or use gameObject.tag = null if you want to remove the tag completely
             return; // No further splitting
+        }
+        
+        // Play the split sound
+        if (AudioSource != null && AudioClip != null)
+        {
+            AudioSource.PlayOneShot(AudioClip);
         }
 
         // Reduce size by the defined factor

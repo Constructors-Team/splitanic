@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SimpleIcebergBehaviour : BaseIceberg
 {
@@ -14,10 +16,26 @@ public class SimpleIcebergBehaviour : BaseIceberg
 
     [Header("Target Position Settings")]
     [SerializeField] private float targetXOffset = -2f; // X position offset for target position
+    
+    [Header("Sounds Settings")]
+    [SerializeField] private AudioClip splitSound;
+    private AudioSource audioSource;
+
+    protected override AudioSource AudioSource => audioSource;
+    protected override AudioClip AudioClip => splitSound;
 
     private float speed;
     private Vector3 targetPosition;
     private Rigidbody2D rb;
+
+    public void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }
 
     public void Initialize(Vector3 startPosition, float icebergSize)
     {
@@ -31,6 +49,12 @@ public class SimpleIcebergBehaviour : BaseIceberg
         rb = GetComponent<Rigidbody2D>();
         
         rb.mass = icebergSize * 50;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component missing from SimpleIceberg");
+        }
 
         // Set a random speed for each iceberg
         speed = Random.Range(minSpeed, maxSpeed);
