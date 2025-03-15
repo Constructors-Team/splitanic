@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -10,8 +9,6 @@ public class GameManager : MonoBehaviour
     private int score;
 
     public TextMeshProUGUI scoreText;
-
-    public TextMeshProUGUI remainingLifeText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +32,6 @@ public class GameManager : MonoBehaviour
             }
 
             scoreText.text = $"Score : {score}";
-            remainingLifeText.text = $"Remaining life : {Mathf.FloorToInt(titanicRef.currentHealth)}";
 
             yield return new WaitForSeconds(frameDuration);
         }
