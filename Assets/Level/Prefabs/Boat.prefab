@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 8460057819282401240}
   m_Layer: 0
   m_Name: Boat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1757629839, guid: 2211ec4f3a0a810a8b69487b38298865, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -191,10 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02792ef29b4d219099ec266e23b20ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 25
-  maxSpeed: 75
-  maxReverseSpeed: 10
-  turnSpeed: 7
+  acceleration: 70
+  maxSpeed: 150
+  maxReverseSpeed: 20
+  turnSpeed: 15
   currentSpeed: 7
   rudderPosition: {fileID: 5429793183050403127}
 --- !u!50 &3423906262430522281
