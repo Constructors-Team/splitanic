@@ -14,6 +14,8 @@ public class BoatController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private BoatSoundManager soundManager;
+
     private KeyCode keyForward = KeyCode.W;
     private KeyCode keyBackward = KeyCode.S;
     private KeyCode keyTurnLeft = KeyCode.A;
@@ -22,6 +24,12 @@ public class BoatController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        soundManager = GetComponent<BoatSoundManager>();
+        
+        if (soundManager == null)
+        {
+            Debug.LogError("[+] BoatSoundManager component missing from boat!");
+        }
     }
 
     void Update()
@@ -33,9 +41,21 @@ public class BoatController : MonoBehaviour
     private void HandleMovement()
     {
         float moveInput = 0f;
+        
+        bool movingForward = false;
+        bool movingBackward = false;
 
-        if (Input.GetKey(keyForward)) moveInput = 1f;
-        if (Input.GetKey(keyBackward)) moveInput = -1f;
+        if (Input.GetKey(keyForward))
+        {
+            moveInput = 1f;
+            movingForward = true;
+        }
+
+        if (Input.GetKey(keyBackward))
+        {
+            moveInput = -1f;
+            movingBackward = true;
+        }
 
         // Apply acceleration, limit speed
         var moveSpeed = moveInput * acceleration;
@@ -50,6 +70,9 @@ public class BoatController : MonoBehaviour
             // Apply force to move player on the left when he is not moving
             rb.AddForce(Vector3.left * currentSpeed, ForceMode2D.Force);
         }
+        
+        // Play motor sound based on movement direction
+        soundManager?.PlayLoopingSound(movingForward, movingBackward);
     }
 
     private void HandleTurning()

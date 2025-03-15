@@ -101,8 +101,8 @@ GameObject:
   - component: {fileID: 3423906262430522281}
   - component: {fileID: 8803145728027178177}
   - component: {fileID: 8460057819282401240}
-  - component: {fileID: -7304038173974573094}
   - component: {fileID: 3684457650523925158}
+  - component: {fileID: -7304038173974573094}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Player
@@ -290,6 +290,21 @@ MonoBehaviour:
   - {fileID: 264182342, guid: 2211ec4f3a0a810a8b69487b38298865, type: 3}
   - {fileID: 1757629839, guid: 2211ec4f3a0a810a8b69487b38298865, type: 3}
   frameDuration: 0.1
+--- !u!114 &3684457650523925158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8421661887180476670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cb0b09c0de42c5d9de4e7bc9099870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardMotorSound: {fileID: 8300000, guid: a698b1c6adf55a193a5d0ca6f8987e40, type: 3}
+  backwardMotorSound: {fileID: 8300000, guid: 5bf279be3977b69a489c66df35b66f98, type: 3}
+  wallCollisionSound: {fileID: 8300000, guid: 40d3fb53d7194a2668294a0362fa287b, type: 3}
 --- !u!82 &-7304038173974573094
 AudioSource:
   m_ObjectHideFlags: 0
@@ -387,16 +402,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3684457650523925158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8421661887180476670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45cb0b09c0de42c5d9de4e7bc9099870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallCollisionSound: {fileID: 8300000, guid: 40d3fb53d7194a2668294a0362fa287b, type: 3}
