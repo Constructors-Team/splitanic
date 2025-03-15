@@ -66,52 +66,34 @@ public class IcebergFactory : MonoBehaviour
     // Method to spawn an iceberg at a specific position with a specific size
     public void SpawnIceberg(Vector3 position, float icebergSize)
     {
-        // Randomly choose one of the iceberg sprites (including the alternative sprites)
-        GameObject selectedIceberg = GetRandomIcebergPrefab();
+        if (icebergPrefab == null) return; // Ensure that the base prefab is assigned
 
-        if (selectedIceberg == null) return; // Ensure that the prefab is assigned before spawning
+        // Instantiate only once
+        GameObject newIceberg = Instantiate(icebergPrefab, position, Quaternion.identity);
 
-        // Instantiate the selected iceberg prefab at the given position
-        GameObject newIceberg = Instantiate(selectedIceberg, position, Quaternion.identity);
+        // Assign a random sprite
+        SpriteRenderer spriteRenderer = newIceberg.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = GetRandomIcebergSprite();
+        }
 
-        // Access the SimpleIcebergBehaviour script to initialize the iceberg
+        // Initialize the iceberg
         SimpleIcebergBehaviour icebergScript = newIceberg.GetComponent<SimpleIcebergBehaviour>();
-
         if (icebergScript != null)
         {
-            // Initialize the iceberg with the given position and size
             icebergScript.Initialize(position, icebergSize);
         }
 
-        // Set the IcebergFactory as the parent of the newly created iceberg
-        newIceberg.transform.SetParent(transform); // 'transform' refers to the IcebergFactory's transform
+        // Set factory as parent
+        newIceberg.transform.SetParent(transform);
     }
 
-    // Method to randomly choose one of the iceberg sprites (original or alternative)
-    private GameObject GetRandomIcebergPrefab()
+    private Sprite GetRandomIcebergSprite()
     {
-        // Create an array of the iceberg prefabs and sprite alternatives
-        Sprite selectedSprite = null;
-        int randomChoice = Random.Range(0, 3); // Choose 0, 1, or 2
-
-        // Randomly select which sprite to use
-        if (randomChoice == 0)
-        {
-            selectedSprite = icebergPrefab.GetComponent<SpriteRenderer>().sprite; // The original iceberg prefab
-        }
-        else if (randomChoice == 1)
-        {
-            selectedSprite = alternativeSprite2; // The second alternative sprite
-        }
-        else
-        {
-            selectedSprite = alternativeSprite3; // The third alternative sprite
-        }
-
-        // Instantiate a prefab based on the selected sprite
-        GameObject iceberg = Instantiate(icebergPrefab, Vector3.zero, Quaternion.identity);
-        iceberg.GetComponent<SpriteRenderer>().sprite = selectedSprite;
-
-        return iceberg;
+        int randomChoice = Random.Range(0, 3);
+        if (randomChoice == 0) return icebergPrefab.GetComponent<SpriteRenderer>().sprite;
+        if (randomChoice == 1) return alternativeSprite2;
+        return alternativeSprite3;
     }
 }
