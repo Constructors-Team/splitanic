@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             }
 
             scoreText.text = $"Score : {score}";
-            remainingLifeText.text = $"Remaining life : {titanicRef.currentHealth}";
+            remainingLifeText.text = $"Remaining life : {Mathf.FloorToInt(titanicRef.currentHealth)}";
 
             yield return new WaitForSeconds(frameDuration);
         }
