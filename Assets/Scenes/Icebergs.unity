@@ -150,10 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icebergPrefab: {fileID: 1579209084254382252, guid: 5cd06dcb170546900b2301e1f795fd15, type: 3}
   spawnInterval: 2
-  minSpeed: 1
-  maxSpeed: 3
-  minSize: {x: 0.5, y: 0.5}
-  maxSize: {x: 1.5, y: 1.5}
 --- !u!4 &547360643
 Transform:
   m_ObjectHideFlags: 0
@@ -386,7 +382,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ee784d2f177fa554d87083335c50490b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -428,7 +424,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 19.17928, y: 9.926693, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
