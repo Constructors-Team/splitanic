@@ -31,6 +31,8 @@ public class BoatController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.centerOfMass = new Vector3(0, 3f, 0);
+
     }
     
     void Update()
@@ -38,8 +40,7 @@ public class BoatController : MonoBehaviour
         handleMove();
         handleRotation();
         
-        // try to adjust center of mass to make boat behaviour more "interresting" :) 
-        rb.centerOfMass = new Vector2(0, -3f) + rb.linearVelocity * 1.4f;
+        // when boat is not moving -> motor push from the back sideway which will move the front
         centerOfMass.transform.position = transform.TransformPoint(rb.centerOfMass);
     }
 
