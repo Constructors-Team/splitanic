@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
 
+    public TextMeshProUGUI remainingLifeText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         while (true) {
     
-            GameObject titanicRef = GameObject.Find("Titanic");
+            Titanic titanicRef = GameObject.FindFirstObjectByType<Titanic>();
 
             if (titanicRef != null) {
                 ++score;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
             }
 
             scoreText.text = $"Score : {score}";
+            remainingLifeText.text = $"Remaining life : {titanicRef.currentHealth}";
 
             yield return new WaitForSeconds(frameDuration);
         }

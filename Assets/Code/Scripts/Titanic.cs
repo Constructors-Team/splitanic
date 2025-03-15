@@ -13,7 +13,7 @@ public class Titanic : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField] private int maxHealth = 1000;
-    private int currentHealth;
+    public int currentHealth;
     private Flash flash;
 
     private CameraShake cameraShake;
