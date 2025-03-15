@@ -12,7 +12,6 @@ public class SimpleIcebergBehaviour : BaseIceberg
         factory = FindObjectOfType<IcebergFactory>(); // Automatically finds the IcebergFactory in the scene
     }
 
-    // Modified Initialize method to accept size as a parameter
     public void Initialize(Vector3 startPosition, float icebergSize)
     {
         float screenHeight = Camera.main.orthographicSize * 2f;
@@ -29,7 +28,7 @@ public class SimpleIcebergBehaviour : BaseIceberg
 
         targetPosition = new Vector3(targetX, targetY, 0f);
 
-        // Set the size of the iceberg based on the parameter passed
+        // Set the iceberg size (scale) passed from the factory
         transform.localScale = new Vector3(icebergSize, icebergSize, 1f);
     }
 
@@ -58,13 +57,17 @@ public class SimpleIcebergBehaviour : BaseIceberg
         // Apply the reduced size to the current iceberg
         transform.localScale = new Vector3(newSize, newSize, 1f);
 
+        // Calculate iceberg size based on current scale
+        float icebergSize = transform.localScale.x;  // Since the iceberg is square, the size is equal in both dimensions
+
         // Calculate offset based on current iceberg size
         float offset = 1f;
+
         Vector3 newPosition = transform.position + new Vector3(offset, 0f, 0f); // Offset on X-axis
 
         if (factory != null)
         {
-            factory.SpawnIceberg(newPosition, newSize); // Pass the adjusted position and size to the factory
+            factory.SpawnIceberg(newPosition, icebergSize); // Pass the adjusted position and size to the factory
         }
     }
 }
