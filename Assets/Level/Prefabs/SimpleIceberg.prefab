@@ -138,7 +138,7 @@ MonoBehaviour:
   minRotation: 0
   maxRotation: 360
   targetXOffset: -2
-  splitSound: {fileID: 8300000, guid: 93e642e1ffa69d468bb8d78c5021b5fe, type: 3}
+  splitSound: {fileID: 8300000, guid: c69d134bbb8048557809e56b0d150c00, type: 3}
 --- !u!60 &3527680554770267645
 PolygonCollider2D:
   m_ObjectHideFlags: 0
