@@ -8,6 +8,7 @@ public class Titanic : MonoBehaviour
     private int currentHealth;
     private Flash flash;
 
+    private CameraShake cameraShake;
 
     private void Awake()
     {
@@ -18,15 +19,17 @@ public class Titanic : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        cameraShake = Camera.main.GetComponent<CameraShake>();
 
     }
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
         Debug.Log("[+] Titanic is hurt! -" + damage);
-
+        
+        cameraShake.Shake();
         StartCoroutine(flash.FlashRoutine());
         
         if (currentHealth <= 0)
@@ -38,7 +41,7 @@ public class Titanic : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        takeDamage(100);
+        TakeDamage(100);
         Destroy(other.gameObject);
     }
 
