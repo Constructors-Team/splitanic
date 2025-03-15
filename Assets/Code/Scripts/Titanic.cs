@@ -12,8 +12,9 @@ public class Titanic : MonoBehaviour
 
     private AudioSource audioSource;
 
-    [SerializeField] private int maxHealth = 1000;
-    private int currentHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float nonDamagingSize = 0.1f;
+    public float currentHealth;
     private Flash flash;
 
     private CameraShake cameraShake;
@@ -28,6 +29,7 @@ public class Titanic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
         currentHealth = maxHealth;
         cameraShake = Camera.main.GetComponent<CameraShake>();
     }
@@ -62,14 +64,14 @@ public class Titanic : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         PlayIcebergCollisionSound();
 
         currentHealth -= damage;
 
         Debug.Log("[+] Titanic is hurt! -" + damage);
-
+        
         cameraShake.Shake();
         StartCoroutine(flash.FlashRoutine());
 
@@ -89,8 +91,20 @@ public class Titanic : MonoBehaviour
             PlayBoatCollisionSound();
             return;
         }
-
-        TakeDamage(100);
+        
+        if (other.gameObject.CompareTag("Iceberg"))
+        {
+            float size = other.gameObject.transform.localScale.x;
+            if (size > nonDamagingSize)
+            {
+                TakeDamage(calculateDamage(size));
+            }
+            else
+            {
+                Debug.Log("[+] Titanic is strong enough for this baby iceberg!!");
+            }
+            Destroy(other.gameObject);
+        }
     }
 
     public void Die()
@@ -107,5 +121,9 @@ public class Titanic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private float calculateDamage(float size) {
+        return Mathf.Pow(size * 100, 2);
     }
 }

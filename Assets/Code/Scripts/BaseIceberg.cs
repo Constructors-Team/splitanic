@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class BaseIceberg : MonoBehaviour
@@ -6,28 +7,42 @@ public abstract class BaseIceberg : MonoBehaviour
     protected abstract AudioClip AudioClip { get; }
     
     protected IcebergFactory factory; // Reference to IcebergFactory
+    private bool canCollide = false; // Initially prevent collisions
+    private Collider2D icebergCollider;
 
     void Start()
     {
-        // Find the factory in the scene
-        factory = FindObjectOfType<IcebergFactory>(); // Automatically finds the IcebergFactory in the scene
+        factory = FindObjectOfType<IcebergFactory>(); // Find the IcebergFactory
+        icebergCollider = GetComponent<Collider2D>();
+
+        if (icebergCollider != null)
+        {
+            icebergCollider.enabled = false; // Disable collisions at start
+        }
+
+        StartCoroutine(EnableCollisionAfterDelay(factory.initialCollisionDelay));
+    }
+
+    private IEnumerator EnableCollisionAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canCollide = true; // Allow collisions
+        if (icebergCollider != null)
+        {
+            icebergCollider.enabled = true; // Enable the collider
+        }
     }
 
     public virtual void SplitIceberg()
     {
-        // Ensure factory is available and access settings from it
-        if (factory == null) return;
+        if (!canCollide || factory == null) return;
 
-        // Get the settings from the factory
         float minSizeForSplitting = factory.minSizeForSplitting;
         float sizeReductionFactor = factory.sizeReductionFactor;
         float icebergOffsetX = factory.icebergOffsetXForSplit;
 
-        // Check if the iceberg size is less than the minimum size for splitting
         if (transform.localScale.x < minSizeForSplitting)
         {
-            // Remove the tag when the iceberg is smaller than the threshold size
-            gameObject.tag = "Untagged"; // or use gameObject.tag = null if you want to remove the tag completely
             return; // No further splitting
         }
         
@@ -37,25 +52,18 @@ public abstract class BaseIceberg : MonoBehaviour
             AudioSource.PlayOneShot(AudioClip);
         }
 
-        // Reduce size by the defined factor
-        float newSize = transform.localScale.x * sizeReductionFactor; // Reduce size
-
-        // Apply the reduced size to the current iceberg
+        float newSize = transform.localScale.x * sizeReductionFactor;
         transform.localScale = new Vector3(newSize, newSize, 1f);
 
-        // Calculate iceberg size based on current scale
-        float icebergSize = transform.localScale.x;  // Since the iceberg is square, the size is equal in both dimensions
-
-        // Calculate offset based on current iceberg size
-        Vector3 newPosition = transform.position + new Vector3(icebergOffsetX, 0f, 0f); // Offset on X-axis
-
-        // Spawn a new iceberg using the factory
-        factory.SpawnIceberg(newPosition, icebergSize); // Pass the adjusted position and size to the factory
+        Vector3 newPosition = transform.position + new Vector3(icebergOffsetX, 0f, 0f);
+        factory.SpawnIceberg(newPosition, newSize);
+        factory.SpawnIceberg(newPosition, newSize);
+        Destroy(gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("IceBreaker"))
+        if (canCollide && other.gameObject.CompareTag("IceBreaker"))
         {
             SplitIceberg();
         }
