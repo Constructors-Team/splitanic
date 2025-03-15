@@ -297,6 +297,22 @@ PrefabInstance:
       propertyPath: remainingLifeText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
+      propertyPath: maxSpeed
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
+      propertyPath: turnSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
+      propertyPath: acceleration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
+      propertyPath: maxReverseSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5256418899201255651, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
