@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BaseIceberg : MonoBehaviour
 {
-    private IcebergFactory factory; // Reference to IcebergFactory
+    protected IcebergFactory factory; // Reference to IcebergFactory
 
     void Start()
     {
