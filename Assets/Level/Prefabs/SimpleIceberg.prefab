@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3527680554770267645}
   m_Layer: 0
   m_Name: SimpleIceberg
-  m_TagString: Untagged
+  m_TagString: Iceberg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

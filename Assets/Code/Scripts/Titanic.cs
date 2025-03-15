@@ -41,8 +41,11 @@ public class Titanic : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        TakeDamage(100);
-        Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Iceberg"))
+        {
+            TakeDamage(100);
+            Destroy(other.gameObject);
+        }
     }
 
     public void Die()

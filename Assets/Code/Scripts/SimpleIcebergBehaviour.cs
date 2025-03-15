@@ -50,9 +50,4 @@ public class SimpleIcebergBehaviour : BaseIceberg
             Destroy(gameObject);
         }
     }
-
-    void OnMouseDown()
-    {
-        SplitIceberg();
-    }
 }
