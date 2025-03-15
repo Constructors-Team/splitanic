@@ -2,16 +2,6 @@ using UnityEngine;
 
 public class BaseIceberg : MonoBehaviour
 {
-    // Calibration constants (Magic numbers)
-    private const float MIN_SIZE = 0.1f; // Minimum size to stop splitting
-    private const float SIZE_REDUCTION_FACTOR = 0.5f; // Factor by which iceberg size is reduced on split
-    private const float OFFSET_X = 1f; // X-axis offset for new iceberg position
-
-    [Header("Iceberg Parameters")]
-    [SerializeField] private float minSizeForSplitting = 0.1f; // Minimum size to stop splitting
-    [SerializeField] private float sizeReductionFactor = 0.5f; // Factor by which iceberg size is reduced on split
-    [SerializeField] private float icebergOffsetX = 1f; // X-axis offset for new iceberg position
-
     private IcebergFactory factory; // Reference to IcebergFactory
 
     void Start()
@@ -22,6 +12,14 @@ public class BaseIceberg : MonoBehaviour
 
     protected void SplitIceberg()
     {
+        // Ensure factory is available and access settings from it
+        if (factory == null) return;
+
+        // Get the settings from the factory
+        float minSizeForSplitting = factory.minSizeForSplitting;
+        float sizeReductionFactor = factory.sizeReductionFactor;
+        float icebergOffsetX = factory.icebergOffsetXForSplit;
+
         // Check if the iceberg size is less than the minimum size for splitting
         if (transform.localScale.x < minSizeForSplitting)
         {
@@ -43,10 +41,7 @@ public class BaseIceberg : MonoBehaviour
         Vector3 newPosition = transform.position + new Vector3(icebergOffsetX, 0f, 0f); // Offset on X-axis
 
         // Spawn a new iceberg using the factory
-        if (factory != null)
-        {
-            factory.SpawnIceberg(newPosition, icebergSize); // Pass the adjusted position and size to the factory
-        }
+        factory.SpawnIceberg(newPosition, icebergSize); // Pass the adjusted position and size to the factory
     }
 
     public void OnTriggerEnter2D(Collider2D other)

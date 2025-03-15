@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class IcebergFactory : MonoBehaviour
 {
-    // Calibration constants (Magic numbers)
-    private const float SPAWN_OFFSET_X = 1f; // The offset for iceberg spawning position on the X-axis
-    private const float MIN_ICEBERG_SIZE = 0.06f; // Minimum size for the iceberg
-    private const float MAX_ICEBERG_SIZE = 0.35f; // Maximum size for the iceberg
-
+    // Calibration parameters exposed to the inspector for easy adjustment
     [Header("Iceberg Parameters")]
-    [SerializeField] private float spawnInterval = 5f; // Time between spawns (can be adjusted in Inspector)
-    [SerializeField] private GameObject icebergPrefab; // Assign your iceberg prefab in the Inspector
+    [SerializeField] public float spawnInterval = 5f; // Time between spawns (can be adjusted in Inspector)
+    [SerializeField] public GameObject icebergPrefab; // Assign your iceberg prefab in the Inspector
+    
+    // Iceberg spawn-related parameters
+    [SerializeField] public float spawnOffsetX = 1f; // The offset for iceberg spawning position on the X-axis
+    [SerializeField] public float minIcebergSize = 0.06f; // Minimum size for the iceberg
+    [SerializeField] public float maxIcebergSize = 0.35f; // Maximum size for the iceberg
+
+    // Iceberg splitting parameters
+    [Header("Iceberg Splitting Parameters")]
+    [SerializeField] public float minSizeForSplitting = 0.1f; // Minimum size to stop splitting
+    [SerializeField] public float sizeReductionFactor = 0.5f; // Factor by which iceberg size is reduced on split
+    [SerializeField] public float icebergOffsetXForSplit = 1f; // X-axis offset for new iceberg position after splitting
 
     private float screenHeight;
     private float screenWidth;
-
     void Start()
     {
         screenHeight = Camera.main.orthographicSize * 2f;
@@ -29,10 +35,10 @@ public class IcebergFactory : MonoBehaviour
         float randomY = Random.Range(-screenHeight / 2, screenHeight / 2);
 
         // Calculate spawn position
-        Vector3 spawnPosition = new Vector3(screenWidth / 2 + SPAWN_OFFSET_X, randomY, 0f);
+        Vector3 spawnPosition = new Vector3(screenWidth / 2 + spawnOffsetX, randomY, 0f);
 
         // Generate a random iceberg size within the defined limits
-        float icebergSize = Random.Range(MIN_ICEBERG_SIZE, MAX_ICEBERG_SIZE);
+        float icebergSize = Random.Range(minIcebergSize, maxIcebergSize);
 
         // Call the method to spawn the iceberg with position and size
         SpawnIceberg(spawnPosition, icebergSize);
