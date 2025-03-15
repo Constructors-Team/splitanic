@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour
 {
     public void PlayButton(){
-        SceneManager.LoadScene("BoatScene");
+        SceneManager.LoadScene("Main Scene");
         Debug.Log("Lance la scène du jeu");
     }
     public void CreditsButton(){
