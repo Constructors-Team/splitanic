@@ -70,7 +70,7 @@ public class Titanic : MonoBehaviour
         currentHealth -= damage;
 
         Debug.Log("[+] Titanic is hurt! -" + damage);
-
+        
         cameraShake.Shake();
         StartCoroutine(flash.FlashRoutine());
 

@@ -524,11 +524,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d59b0781dc71ae08f95f475630c90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpawnInterval: 5
   icebergPrefab: {fileID: 1579209084254382252, guid: 5cd06dcb170546900b2301e1f795fd15, type: 3}
+  initialSpawnInterval: 5
+  spawnIntervalDecrement: 0.95
+  collisionDebounceTime: 1
   spawnOffsetX: 1
   minIcebergSize: 0.06
   maxIcebergSize: 0.35
+  initialCollisionDelay: 0.05
   minSizeForSplitting: 0.1
   sizeReductionFactor: 0.5
   icebergOffsetXForSplit: 1
