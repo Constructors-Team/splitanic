@@ -1,6 +1,4 @@
-using Unity.Mathematics.Geometry;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BoatController : MonoBehaviour
 {
@@ -9,7 +7,10 @@ public class BoatController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed;
     [SerializeField]
+    private float currentForce;
+    [SerializeField]
     private GameObject centerOfMass;
+        
     
     private KeyCode keyForward;
     private KeyCode keyBackward;
@@ -27,20 +28,19 @@ public class BoatController : MonoBehaviour
         keyTurnLeft = KeyCode.A;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
     
-    // Update is called once per frame
     void Update()
     {
         handleMove();
         handleRotation();
         
+        // try to adjust center of mass to make boat behaviour more "interresting" :) 
         rb.centerOfMass = new Vector2(
-            Mathf.Min(0.5f, Mathf.Abs(rb.linearVelocity.x)) * -Mathf.Sign(rb.linearVelocity.x),
+            0,
             Mathf.Min(1, Mathf.Abs(rb.linearVelocity.y)) * -Mathf.Sign(rb.linearVelocity.y)
         );
         centerOfMass.transform.position = transform.position + new Vector3(rb.centerOfMass.x, rb.centerOfMass.y, 0);
@@ -75,6 +75,12 @@ public class BoatController : MonoBehaviour
         if(Input.GetKey(keyBackward))
         {
             move -= transform.up * (acceleration / 2);
+        }
+
+        // add current force if player is not moving
+        if (move.Equals(Vector3.zero))
+        {
+            move = Vector3.left * currentForce;
         }
         
         rb.AddForce(move, ForceMode2D.Force);
