@@ -1,11 +1,12 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Titanic : MonoBehaviour
 {
-    [SerializeField] private AudioClip boatCollisionSound;
-    [SerializeField] private AudioClip icebergCollisionSound;
+    [SerializeField] private AudioClip[] FunnyBoatCollisionSound;
+    [SerializeField] private AudioClip[] FunnyIcebergCollisionSound;
+    
+    [SerializeField] private AudioClip BaseBoatCollisionSound;
+    [SerializeField] private AudioClip BaseIcebergCollisionSound;
 
     private AudioSource audioSource;
     
@@ -29,17 +30,41 @@ public class Titanic : MonoBehaviour
         cameraShake = Camera.main.GetComponent<CameraShake>();
 
     }
-
-    private void PlayCollisionSound()
+    
+    private void PlayBoatCollisionSound()
     {
-        if (audioSource != null && boatCollisionSound != null)
+        if (audioSource != null && BaseBoatCollisionSound != null && FunnyBoatCollisionSound.Length != 0)
         {
-            audioSource.PlayOneShot(boatCollisionSound);
+            // Pick a random sound from the AudioClip array
+            int randomIndex = Random.Range(0, FunnyBoatCollisionSound.Length);
+            AudioClip chosenClip = FunnyBoatCollisionSound[randomIndex];
+            
+            audioSource.PlayOneShot(chosenClip);
+            
+            // Play the base sound at lower volume (e.g., 0.3f for 30% volume)
+            audioSource.PlayOneShot(BaseBoatCollisionSound, 0.3f);
+        }
+    }
+    
+    private void PlayIcebergCollisionSound()
+    {
+        if (audioSource != null && BaseIcebergCollisionSound != null && FunnyIcebergCollisionSound.Length != 0)
+        {
+            // Pick a random sound from the AudioClip array
+            int randomIndex = Random.Range(0, FunnyIcebergCollisionSound.Length);
+            AudioClip chosenClip = FunnyIcebergCollisionSound[randomIndex];
+            
+            audioSource.PlayOneShot(chosenClip);
+            
+            // Play the base sound at lower volume (e.g., 0.3f for 30% volume)
+            audioSource.PlayOneShot(BaseIcebergCollisionSound, 0.3f);
         }
     }
 
     public void TakeDamage(int damage)
     {
+        PlayIcebergCollisionSound();
+        
         currentHealth -= damage;
 
         Debug.Log("[+] Titanic is hurt! -" + damage);
@@ -56,11 +81,11 @@ public class Titanic : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerBoat"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("[+] Player Boat collided with Titanic!");
             // Make a weird sound
-            PlayCollisionSound();
+            PlayBoatCollisionSound();
             return;
         }
         TakeDamage(100);
