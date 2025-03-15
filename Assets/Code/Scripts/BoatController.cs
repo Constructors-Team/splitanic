@@ -40,30 +40,27 @@ public class BoatController : MonoBehaviour
         // Apply acceleration, limit speed
         var moveSpeed = moveInput * acceleration;
         moveSpeed = Mathf.Clamp(moveSpeed, -maxReverseSpeed, maxSpeed);
-
         if (Mathf.Abs(moveInput) > Mathf.Epsilon)
         {
             // Apply force in the direction the boat is facing
-            rb.AddForce(transform.up * moveSpeed, ForceMode2D.Force);
+            rb.AddForce(transform.right * moveSpeed, ForceMode2D.Force);
         }
         else
         {
             // Apply force to move player on the left when he is not moving
             rb.AddForce(Vector3.left * currentSpeed, ForceMode2D.Force);
         }
-
-        
     }
 
     private void HandleTurning()
     {
         float turnInput = 0f;
 
-        if (Input.GetKey(keyTurnLeft)) turnInput = 1f;
-        if (Input.GetKey(keyTurnRight)) turnInput = -1f;
+        if (Input.GetKey(keyTurnLeft)) turnInput = -1f;
+        if (Input.GetKey(keyTurnRight)) turnInput = 1f;
 
         float turnForce = turnInput * turnSpeed; 
 
-        rb.AddForceAtPosition(transform.right * turnForce, rudderPosition.position, ForceMode2D.Force);
+        rb.AddForceAtPosition(transform.up * turnForce, rudderPosition.position, ForceMode2D.Force);
     }
 }
