@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2313669988867382227}
   - component: {fileID: 1942461486596542637}
   - component: {fileID: 5505570785198084009}
-  - component: {fileID: 3158299346452334314}
   - component: {fileID: 5944373418544510222}
+  - component: {fileID: 6033800473766630905}
   m_Layer: 0
   m_Name: Titanic
   m_TagString: Untagged
@@ -103,8 +103,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
---- !u!61 &3158299346452334314
-BoxCollider2D:
+--- !u!114 &5944373418544510222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375412974809793255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cc3d7f386647dbc90bcd4692bc33a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: b93ab4b2f040b15cb8da05e6fb73c3b5, type: 2}
+  restoreDefaultMaterialTime: 0.2
+--- !u!60 &6033800473766630905
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,19 +161,18 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.24, y: 10.24}
-  m_EdgeRadius: 0
---- !u!114 &5944373418544510222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375412974809793255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30cc3d7f386647dbc90bcd4692bc33a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 2100000, guid: b93ab4b2f040b15cb8da05e6fb73c3b5, type: 2}
-  restoreDefaultMaterialTime: 0.2
+  m_Points:
+    m_Paths:
+    - - {x: 3.6810892, y: 0.88071537}
+      - {x: 3.0383563, y: 1.2264397}
+      - {x: 2.6276028, y: 1.401585}
+      - {x: 2.2070882, y: 1.4642102}
+      - {x: 1.6459371, y: 1.4700527}
+      - {x: -5.1731024, y: 1.4962647}
+      - {x: -5.1704454, y: -3.266887}
+      - {x: 2.288398, y: -3.2202256}
+      - {x: 3.5283613, y: -2.4209552}
+      - {x: 4.1284795, y: -1.4989744}
+      - {x: 4.4271297, y: -1.0372229}
+      - {x: 4.726056, y: 0.062409356}
+  m_UseDelaunayMesh: 0
