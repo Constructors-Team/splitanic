@@ -524,12 +524,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d59b0781dc71ae08f95f475630c90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icebergPrefab: {fileID: 1579209084254382252, guid: 5cd06dcb170546900b2301e1f795fd15, type: 3}
-  alternativeSprite2: {fileID: -4036924080673808529, guid: ac258132bd059b1219d9ae25c420561e, type: 3}
-  alternativeSprite3: {fileID: -3449052013508691418, guid: 8a29a000af52edbe58f2adde01724642, type: 3}
   initialSpawnInterval: 5
   spawnIntervalDecrement: 0.95
   collisionDebounceTime: 1
+  icebergPrefab: {fileID: 1579209084254382252, guid: 5cd06dcb170546900b2301e1f795fd15, type: 3}
+  alternativeSprite2: {fileID: -4036924080673808529, guid: ac258132bd059b1219d9ae25c420561e, type: 3}
+  alternativeSprite3: {fileID: -3449052013508691418, guid: 8a29a000af52edbe58f2adde01724642, type: 3}
   spawnOffsetX: 1
   minIcebergSize: 0.06
   maxIcebergSize: 0.35
