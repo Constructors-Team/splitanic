@@ -454,10 +454,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02792ef29b4d219099ec266e23b20ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 30
-  maxSpeed: 20
-  reverseSpeed: 10
+  acceleration: 25
+  maxSpeed: 75
+  maxReverseSpeed: 10
   turnSpeed: 7
+  currentSpeed: 7
   rudderPosition: {fileID: 5429793183050403127}
 --- !u!50 &3423906262430522281
 Rigidbody2D:

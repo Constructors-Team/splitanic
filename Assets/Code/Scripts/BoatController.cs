@@ -7,12 +7,12 @@ public class BoatController : MonoBehaviour
     [SerializeField] private float maxSpeed = 20f;     // Max forward speed
     [SerializeField] private float maxReverseSpeed = 10f;  // Max reverse speed
     [SerializeField] private float turnSpeed = 7f;     // Turning power
+    [SerializeField] private float currentSpeed = 7f;     // Force applied to player when not moving
 
     [Header("Boat Setup")]
     [SerializeField] private Transform rudderPosition; // Place this at the back of the boat
 
     private Rigidbody2D rb;
-    private float currentSpeed = 0f;
 
     private KeyCode keyForward = KeyCode.W;
     private KeyCode keyBackward = KeyCode.S;
@@ -28,7 +28,6 @@ public class BoatController : MonoBehaviour
     {
         HandleMovement();
         HandleTurning();
-        currentSpeed = 0f;
     }
 
     private void HandleMovement()
@@ -39,11 +38,21 @@ public class BoatController : MonoBehaviour
         if (Input.GetKey(keyBackward)) moveInput = -1f;
 
         // Apply acceleration, limit speed
-        currentSpeed += moveInput * acceleration;
-        currentSpeed = Mathf.Clamp(currentSpeed, -maxReverseSpeed, maxSpeed);
+        var moveSpeed = moveInput * acceleration;
+        moveSpeed = Mathf.Clamp(moveSpeed, -maxReverseSpeed, maxSpeed);
 
-        // Apply force in the direction the boat is facing
-        rb.AddForce(transform.up * currentSpeed, ForceMode2D.Force);
+        if (Mathf.Abs(moveInput) > Mathf.Epsilon)
+        {
+            // Apply force in the direction the boat is facing
+            rb.AddForce(transform.up * moveSpeed, ForceMode2D.Force);
+        }
+        else
+        {
+            // Apply force to move player on the left when he is not moving
+            rb.AddForce(Vector3.left * currentSpeed, ForceMode2D.Force);
+        }
+
+        
     }
 
     private void HandleTurning()
@@ -53,15 +62,8 @@ public class BoatController : MonoBehaviour
         if (Input.GetKey(keyTurnLeft)) turnInput = 1f;
         if (Input.GetKey(keyTurnRight)) turnInput = -1f;
 
+        float turnForce = turnInput * turnSpeed; 
 
-        if (Mathf.Abs(currentSpeed) < Mathf.Epsilon)
-        {
-            currentSpeed = acceleration;
-        }
-        
-        float turnForce = turnInput * turnSpeed * (currentSpeed / maxSpeed);
-
-        // Apply force at the rudder position for natural turning
         rb.AddForceAtPosition(transform.right * turnForce, rudderPosition.position, ForceMode2D.Force);
     }
 }
