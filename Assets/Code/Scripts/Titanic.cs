@@ -13,7 +13,7 @@ public class Titanic : MonoBehaviour
 
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private int numberOfExplosions = 5;
-    [SerializeField] private float explosionDuration = 3f; // Time window for explosions
+    [SerializeField] private float explosionDuration = 2f; // Time window for explosions
 
     private AudioSource audioSource;
 
@@ -132,22 +132,62 @@ public class Titanic : MonoBehaviour
 
     private IEnumerator SpawnExplosions()
     {
-        float timeBetweenExplosions = explosionDuration / numberOfExplosions; // Evenly space out explosions
+        // Store initial rotation and calculate target
+        Quaternion initialRotation = transform.rotation;
+        Quaternion
+            targetRotation = initialRotation * Quaternion.Euler(0, 0, 45f); // 45 degrees left from the initial rotation
 
-        for (int i = 0; i < numberOfExplosions; i++)
+        // Timing values
+        float totalRotationTime = explosionDuration + 3f; // Rotation continues 3s after explosions end
+        float rotationSpeed = 45f / totalRotationTime; // Degrees per second
+
+        // Explosion timing
+        float timeBetweenExplosions = explosionDuration / numberOfExplosions;
+        float explosionTimer = 0f;
+        int explosionsSpawned = 0;
+
+        // Rotation progress tracking
+        float startTime = Time.time;
+
+        // Run until rotation completes AND all explosions are spawned
+        while (transform.rotation != targetRotation || explosionsSpawned < numberOfExplosions)
         {
-            Debug.Log("[+] Titanic is exploding!");
-            // Randomize the position around the Titanic
-            Vector3 randomOffset = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0f);
-            float randomScale = Random.Range(0.5f, 1.5f);
+            float deltaTime = Time.deltaTime;
 
-            // Instantiate the explosion
-            GameObject explosion = Instantiate(explosionPrefab, transform.position + randomOffset, Quaternion.identity);
-            explosion.transform.localScale = new Vector3(randomScale, randomScale, 1f);
+            // Rotate the Titanic smoothly toward the target
+            if (transform.rotation != targetRotation)
+            {
+                transform.rotation = Quaternion.RotateTowards(
+                    transform.rotation,
+                    targetRotation,
+                    rotationSpeed * deltaTime // Degrees to rotate this frame
+                );
+            }
 
-            // Wait for the next explosion
-            yield return new WaitForSeconds(timeBetweenExplosions);
+            // Spawn explosions only during the initial explosionDuration window
+            if (Time.time - startTime < explosionDuration && explosionsSpawned < numberOfExplosions)
+            {
+                explosionTimer += deltaTime;
+                if (explosionTimer >= timeBetweenExplosions)
+                {
+                    // Spawn explosion
+                    Vector3 randomOffset = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0f);
+                    float randomScale = Random.Range(0.5f, 1.5f);
+                    GameObject explosion = Instantiate(explosionPrefab, transform.position + randomOffset,
+                        Quaternion.identity);
+                    explosion.transform.localScale = new Vector3(randomScale, randomScale, 1f);
+
+                    explosionsSpawned++;
+                    explosionTimer = 0f;
+                    Debug.Log("[+] Titanic is exploding!");
+                }
+            }
+
+            yield return null;
         }
+
+        // Final cleanup (redundant but safe)
+        transform.rotation = targetRotation;
     }
 
     private float calculateDamage(float size) {
