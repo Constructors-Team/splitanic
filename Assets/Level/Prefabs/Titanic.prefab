@@ -114,7 +114,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a9ab0df121f99b518b1b36c585ef01d4, type: 3}
   BaseBoatCollisionSound: {fileID: 8300000, guid: 12f893161efb02ccc83d1c53e9d0b4f2, type: 3}
   BaseIcebergCollisionSound: {fileID: 8300000, guid: 1ad168242f1083fd281d78fd28eedd44, type: 3}
-  maxHealth: 1000
+  DieSound: {fileID: 8300000, guid: 5b1f4af3a572881108fb6e5672dd9b88, type: 3}
+  maxHealth: 100
 --- !u!114 &5944373418544510222
 MonoBehaviour:
   m_ObjectHideFlags: 0

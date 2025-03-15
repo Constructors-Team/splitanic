@@ -8,6 +8,8 @@ public class Titanic : MonoBehaviour
     [SerializeField] private AudioClip BaseBoatCollisionSound;
     [SerializeField] private AudioClip BaseIcebergCollisionSound;
 
+    [SerializeField] private AudioClip DieSound;
+
     private AudioSource audioSource;
 
     [SerializeField] private int maxHealth = 1000;
@@ -94,6 +96,16 @@ public class Titanic : MonoBehaviour
     public void Die()
     {
         Debug.Log("[+] Titanic died, you loosed :(");
-        Destroy(gameObject);
+        
+        if (audioSource != null && DieSound != null)
+        {
+            Debug.Log("[+] Play dieSound");
+            audioSource.PlayOneShot(DieSound);
+            Destroy(gameObject, DieSound.length);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
