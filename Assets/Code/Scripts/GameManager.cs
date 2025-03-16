@@ -9,7 +9,19 @@ public class GameManager : MonoBehaviour
     private int score;
 
     public TextMeshProUGUI scoreText;
+    
+    // Make it a Singleton
+    public static GameManager Instance { get; private set; }
 
+    void Awake()
+    {
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,5 +47,10 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(frameDuration);
         }
+    }
+
+    public int getScore()
+    {
+        return score;
     }
 }

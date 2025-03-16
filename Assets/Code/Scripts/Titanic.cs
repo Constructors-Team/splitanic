@@ -37,7 +37,8 @@ public class Titanic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
+        // maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
+        maxHealth = 1;
         currentHealth = maxHealth;
         cameraShake = Camera.main.GetComponent<CameraShake>();
         PlayBoatKlaxonSound();
@@ -133,15 +134,16 @@ public class Titanic : MonoBehaviour
             Debug.Log("[+] Play dieSound");
             audioSource.PlayOneShot(DieSound);
             StartCoroutine(SpawnExplosions());
-            StartCoroutine(DelayedSceneSwitch(DieSound.length + 1.5f)); // Switch scene after sound ends + seconds
+            EndScoreTextManager.DisplayEndScoreText();
+            // StartCoroutine(DelayedSceneSwitch(DieSound.length + 1.5f)); // Switch scene after sound ends + seconds
         }
     }
     
-    private IEnumerator DelayedSceneSwitch(float delay)
-    {
-        yield return new WaitForSeconds(delay); 
-        SceneManager.LoadScene("MainMenu"); // Switch scene after delay
-    }
+    // private IEnumerator DelayedSceneSwitch(float delay)
+    // {
+    //     yield return new WaitForSeconds(delay); 
+    //     SceneManager.LoadScene("MainMenu"); // Switch scene after delay
+    // }
 
     private IEnumerator SpawnExplosions()
     {
