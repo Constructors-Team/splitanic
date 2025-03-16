@@ -27,6 +27,8 @@ public class Titanic : MonoBehaviour
 
     private CameraShake cameraShake;
 
+    private bool isDead = false;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -129,12 +131,20 @@ public class Titanic : MonoBehaviour
     {
         Debug.Log("[+] Titanic died, you loosed :(");
         
+        
         if (audioSource != null && DieSound != null)
         {
             Debug.Log("[+] Play dieSound");
             audioSource.PlayOneShot(DieSound);
             StartCoroutine(SpawnExplosions());
-            StartCoroutine(DelayedEndUiDisplay(DieSound.length + 1.5f)); // Switch scene after sound ends + seconds
+            
+            // Display end score text only once
+            // Currently the Titanic can die multiple times... 
+            if (!isDead)
+            {
+                StartCoroutine(DelayedEndUiDisplay(DieSound.length + 1.5f)); // Switch scene after sound ends + seconds    
+            }
+            isDead = true;
         }
     }
     
