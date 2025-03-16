@@ -27,7 +27,7 @@ public class Titanic : MonoBehaviour
 
     private CameraShake cameraShake;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     private void Awake()
     {

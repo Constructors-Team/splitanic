@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     
             Titanic titanicRef = GameObject.FindFirstObjectByType<Titanic>();
 
-            if (titanicRef != null) {
+            if (titanicRef != null && !titanicRef.isDead) {
                 ++score;
                 Debug.Log("Titanic still alive");
             } else {
