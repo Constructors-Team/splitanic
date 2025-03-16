@@ -142,7 +142,7 @@ public class Titanic : MonoBehaviour
             // Currently the Titanic can die multiple times... 
             if (!isDead)
             {
-                StartCoroutine(DelayedEndUiDisplay(DieSound.length + 1.5f)); // Switch scene after sound ends + seconds    
+                StartCoroutine(DelayedEndUiDisplay(DieSound.length)); // Switch scene after sound ends    
             }
             isDead = true;
         }

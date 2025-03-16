@@ -35,8 +35,8 @@ public class IcebergFactory : MonoBehaviour
         // Start spawning icebergs repeatedly based on the initial spawn interval
         InvokeRepeating(nameof(SpawnIceberg), 0f, initialSpawnInterval);
         
-        // Start increasing spawn interval every minute (30 seconds)
-        InvokeRepeating(nameof(DecreaseSpawnInterval), 30f, 30f); // Every 30 seconds
+        // Start increasing spawn interval every minute (10 seconds)
+        InvokeRepeating(nameof(DecreaseSpawnInterval), 10f, 10f); // Every 10 seconds
     }
 
     // Method to decrease the spawn interval every minute
