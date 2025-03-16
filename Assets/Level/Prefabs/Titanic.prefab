@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b29229274c60b90a9c217d75400a644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoatKlaxonSound: {fileID: 8300000, guid: 22bde644758e9d2a494a87aedcebc2c8, type: 3}
   FunnyBoatCollisionSound:
   - {fileID: 8300000, guid: 911e03378c8940077a2cd070ae8b5c28, type: 3}
   - {fileID: 8300000, guid: 8735cb3130b413753bf35fbd0623f2b2, type: 3}

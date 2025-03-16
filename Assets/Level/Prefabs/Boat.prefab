@@ -222,10 +222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02792ef29b4d219099ec266e23b20ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 70
-  maxSpeed: 150
-  maxReverseSpeed: 30
-  turnSpeed: 12
+  acceleration: 30
+  maxSpeed: 17
+  maxReverseSpeed: 10
+  turnSpeed: 8
   currentSpeed: 7
   rudderPosition: {fileID: 5429793183050403127}
 --- !u!50 &3423906262430522281
@@ -453,7 +453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  remainingLifeText: {fileID: 0}
 --- !u!1001 &4360517914986250783
 PrefabInstance:
   m_ObjectHideFlags: 0

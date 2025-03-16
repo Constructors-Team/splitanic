@@ -127,18 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1242017648826824506, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
-    - target: {fileID: 4026172131146258515, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
-    - target: {fileID: 4106473131106563649, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
     - target: {fileID: 6106361748787688375, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
       propertyPath: m_Name
       value: Walls
@@ -183,10 +171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8861640914318238974, guid: aa369dfae4db7a559a5aff1e5ad6ed6c, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: eed77c6982a20cee397aa26a166c146b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -240,10 +224,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5505570785198084009, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
-      propertyPath: BoatKlaxonSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 22bde644758e9d2a494a87aedcebc2c8, type: 3}
     - target: {fileID: 8375412974809793255, guid: cb5bd2212c066ba6f89ca6d462c84e29, type: 3}
       propertyPath: m_Name
       value: Titanic
@@ -401,26 +381,6 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 827762671}
-    - target: {fileID: 1174772098607184860, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
-      propertyPath: remainingLifeText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
-      propertyPath: maxSpeed
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
-      propertyPath: turnSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
-      propertyPath: acceleration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1997995315758305647, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
-      propertyPath: maxReverseSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5256418899201255651, guid: 7ab0c3cc0f2879ea79451b8f3a1d3491, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -568,10 +528,6 @@ PrefabInstance:
     - target: {fileID: 2019390740103042570, guid: 40332c5ad483cb5129ae7c92d2df9aa1, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 4682218985432668023, guid: 40332c5ad483cb5129ae7c92d2df9aa1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6125
       objectReference: {fileID: 0}
     - target: {fileID: 4682218985432668023, guid: 40332c5ad483cb5129ae7c92d2df9aa1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -938,6 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endScoreText: {fileID: 1516877189}
   endScorebackground: {fileID: 2016007264}
+  endScoreButton: {fileID: 2131834735}
 --- !u!114 &1516877189
 MonoBehaviour:
   m_ObjectHideFlags: 0
