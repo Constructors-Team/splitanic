@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Titanic : MonoBehaviour
 {
@@ -132,12 +133,14 @@ public class Titanic : MonoBehaviour
             Debug.Log("[+] Play dieSound");
             audioSource.PlayOneShot(DieSound);
             StartCoroutine(SpawnExplosions());
-            Destroy(gameObject, DieSound.length);
+            StartCoroutine(DelayedSceneSwitch(DieSound.length + 1.5f)); // Switch scene after sound ends + seconds
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+    }
+    
+    private IEnumerator DelayedSceneSwitch(float delay)
+    {
+        yield return new WaitForSeconds(delay); 
+        SceneManager.LoadScene("MainMenu"); // Switch scene after delay
     }
 
     private IEnumerator SpawnExplosions()
