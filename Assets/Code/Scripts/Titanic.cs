@@ -106,6 +106,7 @@ public class Titanic : MonoBehaviour
             Debug.Log("[+] Player Boat collided with Titanic!");
             // Make a weird sound
             PlayBoatCollisionSound();
+            cameraShake.Shake();
             return;
         }
         
