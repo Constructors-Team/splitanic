@@ -20,6 +20,9 @@
         },
         {
             "m_Id": "b99f72cd97ab476ab388c37b054bae29"
+        },
+        {
+            "m_Id": "c84f99f223ef4eeeb77404836d1aaad8"
         }
     ],
     "m_Keywords": [],
@@ -107,25 +110,14 @@
         },
         {
             "m_Id": "91759e7b86794c3fb3fdd83568f80fd8"
+        },
+        {
+            "m_Id": "aebfc9aa951a422695b7f7eb5631d19b"
         }
     ],
     "m_GroupDatas": [],
     "m_StickyNoteDatas": [],
     "m_Edges": [
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "11a8514bc02947ee826b311bb4b114c7"
-                },
-                "m_SlotId": 0
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "565009659ae14d088c24c8e51332c20c"
-                },
-                "m_SlotId": 1
-            }
-        },
         {
             "m_OutputSlot": {
                 "m_Node": {
@@ -306,6 +298,20 @@
                     "m_Id": "64d2024d4148424cab8ca151cc109f73"
                 },
                 "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "aebfc9aa951a422695b7f7eb5631d19b"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "565009659ae14d088c24c8e51332c20c"
+                },
+                "m_SlotId": 1
             }
         },
         {
@@ -2533,6 +2539,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "aebfc9aa951a422695b7f7eb5631d19b",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -2295.35693359375,
+            "y": -729.70166015625,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "d19f3e22ecf24f529581295bc2a5e61c"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "c84f99f223ef4eeeb77404836d1aaad8"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.UVMaterialSlot",
     "m_ObjectId": "af79e0f3f1c0453f9876daabe8775f9c",
     "m_Id": 0,
@@ -2591,6 +2633,9 @@
         },
         {
             "m_Id": "8ee3a57787344fe1aad25cd7546a3c4b"
+        },
+        {
+            "m_Id": "c84f99f223ef4eeeb77404836d1aaad8"
         }
     ]
 }
@@ -2838,6 +2883,34 @@
 
 {
     "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "c84f99f223ef4eeeb77404836d1aaad8",
+    "m_Guid": {
+        "m_GuidSerialized": "e93929c8-8b5d-4724-a96a-96fdb007c563"
+    },
+    "m_Name": "tiling01-2",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "tiling01-2",
+    "m_DefaultReferenceName": "_tiling01_2",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": 7.0,
+        "y": 7.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 1,
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "c9ef6a36420d462ab97f969ba68fa7cc",
     "m_Datas": [],
@@ -2873,6 +2946,27 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "d19f3e22ecf24f529581295bc2a5e61c",
+    "m_Id": 0,
+    "m_DisplayName": "tiling01-2",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
     "m_Labels": []
 }
 

@@ -66,8 +66,9 @@ Material:
     - _tiling02: 5
     m_Colors:
     - _color: {r: 6.4860096, g: 11.047787, b: 11.458617, a: 0}
-    - _speed01: {r: 0.05, g: 0, b: 0, a: 0}
-    - _speed02: {r: 0.07, g: 0.1, b: 0, a: 0}
-    - _watercolor: {r: 0.32106617, g: 0.7040589, b: 0.9198113, a: 0}
+    - _speed01: {r: 0.2, g: 0, b: 0, a: 0}
+    - _speed02: {r: 0.28, g: 0.1, b: 0, a: 0}
+    - _tiling01_2: {r: 6, g: 8, b: 0, a: 0}
+    - _watercolor: {r: 0.35777858, g: 0.7068668, b: 0.9481132, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
