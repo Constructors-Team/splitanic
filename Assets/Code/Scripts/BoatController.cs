@@ -11,6 +11,8 @@ public class BoatController : MonoBehaviour
 
     [Header("Boat Setup")]
     [SerializeField] private Transform rudderPosition; // Place this at the back of the boat
+    [SerializeField] private GameObject foamAnimation;
+    [SerializeField] private GameObject foamAnimationReverse;
 
     private Rigidbody2D rb;
 
@@ -25,6 +27,7 @@ public class BoatController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         soundManager = GetComponent<BoatSoundManager>();
+        foamAnimationReverse.GetComponent<SpriteRenderer>().enabled = false;
         
         if (soundManager == null)
         {
@@ -49,12 +52,16 @@ public class BoatController : MonoBehaviour
         {
             moveInput = 1f;
             movingForward = true;
+            foamAnimation.GetComponent<SpriteRenderer>().enabled = true;
+            foamAnimationReverse.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (Input.GetKey(keyBackward))
         {
             moveInput = -1f;
             movingBackward = true;
+            foamAnimation.GetComponent<SpriteRenderer>().enabled = false;
+            foamAnimationReverse.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         // Apply acceleration, limit speed
