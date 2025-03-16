@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: caed167a2663a9b648fc59bb7140c217, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   maxHealth: 10
   nonDamagingSize: 0.1
   currentHealth: 0
+  isDead: 0
 --- !u!114 &5944373418544510222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,8 +248,8 @@ PolygonCollider2D:
       - {x: 2.6276028, y: 1.401585}
       - {x: 2.2070882, y: 1.4642102}
       - {x: 1.6459371, y: 1.4700527}
-      - {x: -1.9495988, y: 1.5189651}
-      - {x: -1.9003344, y: -3.227957}
+      - {x: -5.1343374, y: 1.5590247}
+      - {x: -5.205249, y: -3.2079272}
       - {x: 2.288398, y: -3.2202256}
       - {x: 3.5283613, y: -2.4209552}
       - {x: 4.1284795, y: -1.4989744}
