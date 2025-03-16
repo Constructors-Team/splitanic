@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Titanic : MonoBehaviour
 {
+    [SerializeField] private AudioClip BoatKlaxonSound;
+    
     [SerializeField] private AudioClip[] FunnyBoatCollisionSound;
     [SerializeField] private AudioClip[] FunnyIcebergCollisionSound;
 
@@ -37,6 +39,15 @@ public class Titanic : MonoBehaviour
         maxHealth = calculateDamage(GameObject.FindFirstObjectByType<IcebergFactory>().maxIcebergSize) * 7;
         currentHealth = maxHealth;
         cameraShake = Camera.main.GetComponent<CameraShake>();
+        PlayBoatKlaxonSound();
+    }
+
+    private void PlayBoatKlaxonSound()
+    {
+        if (audioSource != null && BoatKlaxonSound != null)
+        {
+            audioSource.PlayOneShot(BoatKlaxonSound);
+        }
     }
 
     private void PlayBoatCollisionSound()
